@@ -30,6 +30,13 @@ function update(time) {
   updateCactus(delta, speedScale)
   updateSpeedScale(delta)
   updateScore(delta)
+
+  if (score >= 50) {
+    document.querySelector(".score_terakhir").style.display = "block";
+    document.querySelector(".world").style.display = "none";
+
+  }
+
   if (checkLose()) return handleLose()
 
   lastTime = time
@@ -57,6 +64,8 @@ function updateSpeedScale(delta) {
 function updateScore(delta) {
   score += delta * 0.01
   scoreElem.textContent = Math.floor(score)
+
+
 }
 
 function handleStart() {

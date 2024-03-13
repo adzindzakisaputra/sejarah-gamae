@@ -6,7 +6,7 @@ import {
 
 const dinoElem = document.querySelector("[data-dino]")
 const JUMP_SPEED = 0.45
-const GRAVITY = 0.0015
+const GRAVITY = 0.0010
 const DINO_FRAME_COUNT = 2
 const FRAME_TIME = 100
 
@@ -34,18 +34,19 @@ export function getDinoRect() {
 }
 
 export function setDinoLose() {
-  dinoElem.src = "imgs/dino-lose.png"
+  dinoElem.src = "imgs/mobil.png"
+  document.querySelector(".start-screen").innerHTML = "Gagal culik Soekarno dan hatta";
 }
 
 function handleRun(delta, speedScale) {
   if (isJumping) {
-    dinoElem.src = `imgs/dino-stationary.png`
+    dinoElem.src = `imgs/mobil.png`
     return
   }
 
   if (currentFrameTime >= FRAME_TIME) {
-    dinoFrame = (dinoFrame + 1) % DINO_FRAME_COUNT
-    dinoElem.src = `imgs/dino-run-${dinoFrame}.png`
+    dinoFrame = (dinoFrame + 2) % DINO_FRAME_COUNT
+    dinoElem.src = `imgs/mobil.png`
     currentFrameTime -= FRAME_TIME
   }
   currentFrameTime += delta * speedScale
